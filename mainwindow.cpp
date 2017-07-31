@@ -104,3 +104,110 @@ MainWindow::~MainWindow()
 
 
 
+
+
+
+
+
+
+void MainWindow::on_saveButton_clicked()
+{
+    if(saveFileName.isEmpty())//如果为空执行另存为操作
+    {
+        on_saveAsButton_clicked();
+    }
+    else                      //如果不为空 则保存
+    {
+        QFile *file=new QFile;
+        file->setFileName(saveFileName);
+        bool ok=file->open(QIODevice::WriteOnly);
+        if(ok)
+        {
+            QTextStream out(file);
+            out<<ui->lineEdit_display->text();//去除textEdit当中的纯文本 重定向到流中 放入磁盘
+            file->close();
+            this->setWindowTitle(saveFileName+"---------notepad");
+            delete file;
+        }
+        else
+        {
+            QMessageBox::information(this,"Error Message","Save File Error");
+            return;
+        }
+    }
+}
+
+void MainWindow::on_saveAsButton_clicked()
+{
+    QString saveFileName=QFileDialog::getSaveFileName(this,"Save File",QDir::currentPath());
+    //get save file name
+    if(saveFileName.isEmpty())
+    {
+        QMessageBox::information(this,"Error Message","Please Select A File");
+        return;
+    }
+    else
+    {
+        QFile *file=new QFile;
+        file->setFileName(saveFileName);
+        bool ok=file->open(QIODevice::WriteOnly);
+        if(ok)
+        {
+            QTextStream out(file);
+            out<<ui->lineEdit_display->text();//去除textEdit当中的纯文本 重定向到流中 放入磁盘
+            file->close();
+            this->setWindowTitle(saveFileName+"---------notepad");
+            delete file;
+        }
+        else
+        {
+            QMessageBox::information(this,"Error Message","Save File Error");
+            return;
+        }
+    }
+}
+
+void MainWindow::on_calculateButton_clicked()
+{
+
+}
+
+void MainWindow::on_loadButton_clicked()
+{
+    //get file name
+    QString fileName=QFileDialog::getOpenFileName(this,"Open File",QDir::currentPath());
+    qDebug()<<"fileName is"<<fileName;
+    if(fileName.isEmpty())
+    {
+        QMessageBox::information(this,"Error Message","Please Select a Text File");
+        return;
+    }
+    QFile *file=new QFile;
+    file->setFileName(fileName);
+    bool ok=file->open(QIODevice::ReadOnly);
+    //open file as readonly mode
+
+    if(ok)
+
+    {
+        //文件与文本流相关联
+        QTextStream in(file);
+        int i=0;
+        int lineNo=11;
+        QString line="";
+        while (!in.atEnd() && ++i<=lineNo)
+        {
+          line=in.readLine();
+        }
+        //ui->lineEdit_display->setText(in.readAll());
+        ui->lineEdit_display->setText(line);
+        //file->close();
+        delete file;
+
+    }
+    else
+    {
+        QMessageBox::information(this,"Error Message","File Open Error"+file->errorString());
+        return ;
+    }
+}

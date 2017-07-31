@@ -760,6 +760,9 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -800,7 +803,7 @@
      <string>此处显示提示信息</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="calculateButton">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -813,10 +816,10 @@
      <string>计算</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="saveButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>460</x>
       <y>210</y>
       <width>75</width>
       <height>23</height>
@@ -826,10 +829,10 @@
      <string>保存</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="loadButton">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>340</x>
       <y>210</y>
       <width>75</width>
       <height>23</height>
@@ -837,6 +840,19 @@
     </property>
     <property name="text">
      <string>加载</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="saveAsButton">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>210</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>另存为</string>
     </property>
    </widget>
   </widget>
