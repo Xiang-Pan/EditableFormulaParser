@@ -17,6 +17,7 @@
 #include<QUrl>
 #include<QDesktopServices>//用于访问桌面服务
 #include<QCloseEvent>
+#include<QLineEdit>
 //程序需要关闭 处理的内容 所有的事件protected 子类可以继承
 namespace Ui
 {
@@ -48,6 +49,8 @@ private slots:
     void on_saveAsButton_clicked();
     void on_calculateButton_clicked();
     void on_loadButton_clicked();
+    //QList<QLineEdit> list;//test
+
 };
 
 #endif // MAINWINDOW_H

@@ -154,7 +154,18 @@ void MainWindow::on_saveAsButton_clicked()
         if(ok)
         {
             QTextStream out(file);
-            out<<ui->lineEdit_display->text();//去除textEdit当中的纯文本 重定向到流中 放入磁盘
+            out<<"A="<<ui->lineEdit_A->text()<<endl
+              <<"B="<<ui->lineEdit_B->text()<<endl
+              <<"C="<<ui->lineEdit_C->text()<<endl
+                <<"D="<<ui->lineEdit_D->text()<<endl
+                  <<"E="<<ui->lineEdit_E->text()<<endl
+                    <<"F="<<ui->lineEdit_F->text()<<endl
+                      <<"G="<<ui->lineEdit_G->text()<<endl
+                        <<"X="<<ui->lineEdit_X->text()<<endl
+                          <<"Y="<<ui->lineEdit_Y->text()<<endl
+                            <<"Z="<<ui->lineEdit_Z->text()<<endl
+
+                            <<"Formula:"<<ui->lineEdit_display->text();//去除textEdit当中的纯文本 重定向到流中 放入磁盘
             file->close();
             this->setWindowTitle(saveFileName+"---------notepad");
             delete file;
@@ -195,12 +206,32 @@ void MainWindow::on_loadButton_clicked()
         int i=0;
         int lineNo=11;
         QString line="";
-        while (!in.atEnd() && ++i<=lineNo)
-        {
-          line=in.readLine();
-        }
+        QString varChar="";
+        //此处没有循环只能手写
+        //Qlist不提供重载
+        line=in.readLine().mid(2);
+        ui->lineEdit_A->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_B->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_C->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_D->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_E->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_F->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_G->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_X->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_Y->setText(line);//最后一行公式
+        line=in.readLine().mid(2);
+        ui->lineEdit_Z->setText(line);//最后一行公式
+        line=in.readLine().mid(9);
         //ui->lineEdit_display->setText(in.readAll());
-        ui->lineEdit_display->setText(line);
+        ui->lineEdit_display->setText(line);//最后一行公式
         //file->close();
         delete file;
 
