@@ -95,32 +95,7 @@ void MainWindow::funClicked()
 }
 
 
-void MainWindow::saveFileSlot()
-{
-    if(saveFileName.isEmpty())//如果为空执行另存为操作
-    {
-        this->saveAsFileSlot();
-    }
-    else                      //如果不为空 则保存
-    {
-        QFile *file=new QFile;
-        file->setFileName(saveFileName);
-        bool ok=file->open(QIODevice::WriteOnly);
-        if(ok)
-        {
-            QTextStream out(file);
-            out<<ui->textEdit->toPlainText();//去除textEdit当中的纯文本 重定向到流中 放入磁盘
-            file->close();
-            this->setWindowTitle(saveFileName+"---------");
-            delete file;
-        }
-        else
-        {
-            QMessageBox::information(this,"Error Message","Save File Error");
-            return;
-        }
-    }
-}
+
 
 MainWindow::~MainWindow()
 {

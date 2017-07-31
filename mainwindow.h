@@ -24,9 +24,9 @@ private slots:
     void funClicked();
     void varClicked();
 
-    void newFileSlot();
-    void openFileSlot();//打开一个已经存在的文本文件
-    void saveFileSlot();//保存文件到磁盘
+    //void newFileSlot();
+    //void openFileSlot();//打开一个已经存在的文本文件
+    //void saveFileSlot();//保存文件到磁盘
 };
 
 #endif // MAINWINDOW_H
